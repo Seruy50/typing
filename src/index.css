@@ -11,3 +11,90 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.pseudoHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
+.text {
+  margin: 100px 0 100px;
+  width: 500px;
+  font: bold 20px/25px arial;
+  color: green;
+}
+
+#textArea {
+  font: bold italic 20px/25px arial;
+  display: block;
+  width: 500px;
+  height: 200px;
+  border-color: red;
+  border-radius: 25px;
+  padding: 25px;
+  text-align: center;
+}
+
+#textArea:hover {
+  border-color: white;
+}
+
+#textArea:disabled {
+  background-color: red;
+}
+
+.result {
+  text-align: center;
+  font: bold italic 100px/120px Georgia, serif;
+  color: rgba(74, 209, 49, 0.8);
+  text-shadow: 4px 4px rgba(74, 209, 49, 0.3);; 
+}
+
+.centralPart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;;
+  width: 33%;
+}
+
+button {
+  border-radius: 25px;
+  width: 300px;
+  height: 100px;
+  background-color: yellow;
+  font: bold 25px georgia;
+  border: 1px solid orange;
+  box-shadow: 10px 10px rgba(255, 252, 127, 0.8);
+}
+
+.count {
+  text-align: center;
+  font: bold 85px/75px georgia;
+  width: 33%;
+}
+
+.mistake {
+  font: bold 70px/75px georgia;
+  color: red;
+  text-align: center;
+}
+
+.forButton {
+  text-align: center;
+}
+
+.forButtonTry {
+  background-color: green;
+  color: white;
+  box-shadow: 10px 10px rgba(74, 209, 49, 0.3);
+}
