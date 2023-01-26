@@ -65,7 +65,7 @@ const timerReset = () => {
 
 
 
-return <>
+return <div>
   <div className='pseudoHeader'>
     <div className='text' onCopy={() => setCopyStop(true)}>{str}</div>
   </div>
@@ -89,7 +89,7 @@ return <>
     <p className='mistake'>{copyStop ? 'Дружок, а ти не охринів часом?' : ''}</p>
     <p className="result">{result}</p>
   </div>
- </>
+ </div>
 }
 
 export default App;
