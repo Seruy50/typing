@@ -3,59 +3,58 @@ import heart from "./1.jpg";
 import heartNo from "./2.jpg";
 
 function App() {
-  const [areaText, setAreaText] = useState("");
-  const [count, setCount] = useState(5);
-  const [problem, setProblem] = useState(true);
-  const [intervalID, setIntervalID] = useState(0);
-  const [result, setResult] = useState("");
-  const [copyStop, setCopyStop] = useState(false);
-  const [bgc, setBgc] = useState({
-    background: "white",
-  });
-  const [line, setLine] = useState("30%");
-  const [life, setLife] = useState([
-    <span className="heartSpan" key="0">
-      <img src={heart} alt="none" />
-    </span>,
-    <span className="heartSpan" key="1">
-      <img src={heart} alt="none" />
-    </span>,
-    <span className="heartSpan" key="2">
-      <img src={heart} alt="none" />
-    </span>,
-  ]);
-  const [buttonAllow, setButtonAllow] = useState(false);
 
-  //let str = 'У 1908 році було прокладено першу залізницю, що поєднала Володимир-Волинський із Ковелем на півночі і далі з Києвом, діяли поштово-телеграфна контора, вісім готелів, два кінотеатри, чотири фабрично-заводські підприємства.  '
-  let str = "Слово";
+const [areaText, setAreaText] = useState('')
+const [count, setCount] = useState(5);
+const [problem, setProblem] = useState(true);  
+const [intervalID, setIntervalID] = useState(0);
+const [result, setResult] = useState('');
+const [copyStop, setCopyStop] = useState(false);
+const [bgc, setBgc] = useState({
+  background: 'white'
+})
+const [line, setLine] = useState('30%');
+const [life, setLife] = useState([<span className="heartSpan" key="0"><img src={heart} alt="none" /></span>,
+  <span className="heartSpan" key="1"><img src={heart} alt="none" /></span>, 
+    <span className="heartSpan" key="2"><img src={heart} alt="none" /></span>]);
+const [buttonAllow, setButtonAllow] = useState(false)
 
-  const lifeEnd = () => {
-    let lifes = life;
-    lifes.pop();
-    setLife(lifes);
-  };
 
-  let changeText = (e) => {
-    setAreaText(e.target.value);
-    console.log(areaText);
-    const percentage = () => {
-      let b = areaText.length / (str.length / 100);
-      return b;
-    };
-    setLine(percentage());
-    arrayFromValue();
-    if (str.length === areaText.length && str === areaText) {
-      setResult("Вітаю, вам вдалося!");
-      setCount(count);
-      clearInterval(intervalID);
-    } else if (count <= 0) {
-      setProblem(true);
-      lifeEnd();
-    }
-  };
 
-  let arrayFromValue = () => {
-    if (str[areaText.length - 1] !== areaText[areaText.length - 1]) {
+//let str = 'У 1908 році було прокладено першу залізницю, що поєднала Володимир-Волинський із Ковелем на півночі і далі з Києвом, діяли поштово-телеграфна контора, вісім готелів, два кінотеатри, чотири фабрично-заводські підприємства.  '
+let str = 'Слово';
+
+const lifeEnd = () => {
+  let lifes = life;
+  lifes.pop();
+  setLife(lifes);
+}
+
+let changeText = (e) => {
+  const value = e.target.value
+  setAreaText(value);
+
+  console.log(value)
+  
+  arrayFromValue();
+  if(str.length === areaText.length && str === areaText){
+    setResult('Вітаю, вам вдалося!!!');
+    setCount(count)
+    clearInterval(intervalID);
+  } else if(count <= 0) {
+    setProblem(true); 
+    lifeEnd();
+  }
+  
+}
+
+const percentage = (text) => {
+  let b = text.length / (str.length / 100);
+  return b;
+}
+
+let arrayFromValue = () => {
+    if(str[areaText.length - 1] !== areaText[areaText.length - 1]) {
       setBgc({
         background: "red",
       });
