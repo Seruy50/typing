@@ -1,53 +1,58 @@
 import React, {useState} from 'react'
 
 function App() {
-//Продовжуй мудохатись з таймером!!!
+
 const [areaText, setAreaText] = useState('')
-const [count, setCount] = useState(10);
-const [problem, setProblem] = useState(false);
+const [count, setCount] = useState(5);
+const [problem, setProblem] = useState(true);  
 const [intervalID, setIntervalID] = useState(0);
 const [result, setResult] = useState('');
 const [copyStop, setCopyStop] = useState(false);
+const [bgc, setBgc] = useState({
+  background: 'white'
+})
+const [widht, setWidth] = useState()
+const [line, setLine] = useState({
+  width: '{}'
+})
 
-let str = 'У 1908 році було прокладено першу залізницю, що поєднала Володимир-Волинський із Ковелем на півночі і далі з Києвом, діяли поштово-телеграфна контора, вісім готелів, два кінотеатри, чотири фабрично-заводські підприємства.  '
-let arr = areaText.split('');
-let arr2 = str.split('');
+
+//let str = 'У 1908 році було прокладено першу залізницю, що поєднала Володимир-Волинський із Ковелем на півночі і далі з Києвом, діяли поштово-телеграфна контора, вісім готелів, два кінотеатри, чотири фабрично-заводські підприємства.  '
+let str = 'Слово'
+
+
 
 let changeText = (e) => {
   setAreaText(e.target.value);
+  console.log(areaText)
   arrayFromValue();
-  console.log(arr.length + '' + arr2.length);
-  if((arr.length + 1) === arr2.length){
+  if(str.length === areaText.length && str === areaText){
     setResult('Вітаю, вам вдалося!');
-    timerReset();
+    setCount(count)
     clearInterval(intervalID);
+  } else if(count <= 0) {
+    setProblem(true); 
   }
-  if(count <= 0) {
-    setProblem(true)
-  }
+  
 }
 
 let arrayFromValue = () => {
-  for(let i = 0; i < arr.length; i++){
-    if(arr[i] !== arr2[i]) {
-      setProblem(true);
-      timerReset(); 
-    }
-  }
-}
-
-let newAttempt = () => {
-  setProblem(false);
-  setAreaText('');
-  timerReset();
-  setResult('')
+    if(str[areaText.length - 1] !== areaText[areaText.length - 1]) {
+      setBgc({
+        background: 'red'
+      });
+    } else {
+      setBgc({
+        background: 'white'
+      })
+    } 
 }
 
 const timer = () =>{
-  if(intervalID){
+ /* if(intervalID){
     timerReset();
     return;
-  } 
+  } */
 
   const time = setInterval(() => {
     setCount(prevCount => prevCount - 1);
@@ -58,10 +63,16 @@ const timer = () =>{
 const timerReset = () => {
   clearInterval(intervalID);
   setIntervalID(0);
-  setCount(10)
+  setCount(5)
   timer();
 }
 
+let newAttempt = () => {
+  setProblem(false);
+  setAreaText('');
+  timerReset();
+  setResult('')
+}
 
 
 
@@ -79,10 +90,16 @@ return <>
       </div>
     </div>
     <div>
-    <textarea value={areaText} id="textArea" disabled={problem} onChange={changeText} onPaste={() => setCopyStop(true)}></textarea>
+    <textarea value={areaText} style={bgc} id="textArea"  disabled={problem} onChange={changeText} onPaste={() => setCopyStop(true)}></textarea>
     </div>
     <div className='count'>
     <p>{count <= 0 ? '' : count}</p>
+    </div>
+  </div>
+  <div>
+    <div className="line">
+      <div className="progres">
+      </div>
     </div>
   </div>
   <div>
