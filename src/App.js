@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 function App() {
 
 const [areaText, setAreaText] = useState('')
-const [count, setCount] = useState(5);
+const [count, setCount] = useState(100);
 const [problem, setProblem] = useState(true);  
 const [intervalID, setIntervalID] = useState(0);
 const [result, setResult] = useState('');
@@ -16,8 +16,8 @@ const [line, setLine] = useState('30%')
 
 
 
-//let str = 'У 1908 році було прокладено першу залізницю, що поєднала Володимир-Волинський із Ковелем на півночі і далі з Києвом, діяли поштово-телеграфна контора, вісім готелів, два кінотеатри, чотири фабрично-заводські підприємства.  '
-let str = 'Слово'
+let str = 'У 1908 році було прокладено першу залізницю, що поєднала Володимир-Волинський із Ковелем на півночі і далі з Києвом, діяли поштово-телеграфна контора, вісім готелів, два кінотеатри, чотири фабрично-заводські підприємства.  '
+
 
 
 
@@ -67,7 +67,7 @@ const timer = () =>{
 const timerReset = () => {
   clearInterval(intervalID);
   setIntervalID(0);
-  setCount(5)
+  setCount(100)
   timer();
 }
 
