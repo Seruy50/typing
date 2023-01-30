@@ -33,8 +33,6 @@ const lifeEnd = () => {
 let changeText = (e) => {
   const value = e.target.value
   setAreaText(value);
-
-  console.log(value)
   
   arrayFromValue();
   if(str.length === areaText.length && str === areaText){
