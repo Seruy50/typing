@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import heart from "./1.jpg";
-import heartNo from "./2.jpg";
 
 function App() {
 
@@ -45,6 +44,14 @@ let changeText = (e) => {
   } else if(count <= 0) {
     setProblem(true); 
     lifeEnd();
+  }
+  if(copyStop === true) {
+    lifeEnd();
+    lifeEnd();
+    lifeEnd();
+    setProblem(true); 
+    setCount(count)
+    clearInterval(intervalID);
   }
   
 }
