@@ -34,7 +34,7 @@ let changeText = (e) => {
   const value = e.target.value
   setAreaText(value);
   
-  arrayFromValue();
+  arrayFromValue(e.target.value);
   if(str.length === areaText.length && str === areaText){
     setResult('Вітаю, вам вдалося!!!');
     setCount(count)
@@ -51,8 +51,8 @@ const percentage = (text) => {
   return b;
 }
 
-let arrayFromValue = () => {
-    if(str[areaText.length - 1] !== areaText[areaText.length - 1]) {
+let arrayFromValue = (text) => {
+    if(str[text.length - 1] !== text[text.length - 1]) {
       setBgc({
         background: "red",
       });
