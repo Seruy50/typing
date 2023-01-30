@@ -11,10 +11,9 @@ const [copyStop, setCopyStop] = useState(false);
 const [bgc, setBgc] = useState({
   background: 'white'
 })
-const [widht, setWidth] = useState()
-const [line, setLine] = useState({
-  width: '{}'
-})
+const [line, setLine] = useState('30%')
+
+
 
 
 //let str = 'У 1908 році було прокладено першу залізницю, що поєднала Володимир-Волинський із Ковелем на півночі і далі з Києвом, діяли поштово-телеграфна контора, вісім готелів, два кінотеатри, чотири фабрично-заводські підприємства.  '
@@ -25,6 +24,11 @@ let str = 'Слово'
 let changeText = (e) => {
   setAreaText(e.target.value);
   console.log(areaText)
+  const percentage = () => {
+    let b = areaText.length / (str.length / 100);
+    return b;
+  }
+  setLine(percentage())
   arrayFromValue();
   if(str.length === areaText.length && str === areaText){
     setResult('Вітаю, вам вдалося!');
@@ -72,6 +76,7 @@ let newAttempt = () => {
   setAreaText('');
   timerReset();
   setResult('')
+  setLine(0)
 }
 
 
@@ -98,7 +103,7 @@ return <>
   </div>
   <div>
     <div className="line">
-      <div className="progres">
+      <div className="progres" style={{width: line + '%'}}>
       </div>
     </div>
   </div>
