@@ -31,13 +31,11 @@ const lifeEnd = () => {
 }
 
 let changeText = (e) => {
-  setAreaText(e.target.value);
-  console.log(areaText)
-  const percentage = () => {
-    let b = areaText.length / (str.length / 100);
-    return b;
-  }
-  setLine(percentage())
+  const value = e.target.value
+  setAreaText(value);
+  
+  console.log(value)
+  
   arrayFromValue();
   if(str.length === areaText.length && str === areaText){
     setResult('Вітаю, вам вдалося!');
@@ -48,6 +46,11 @@ let changeText = (e) => {
     lifeEnd();
   }
   
+}
+
+const percentage = (text) => {
+  let b = text.length / (str.length / 100);
+  return b;
 }
 
 let arrayFromValue = () => {
@@ -120,7 +123,7 @@ return <div>
     </div>
     <div>
       <div className="line">
-        <div className="progres" style={{width: line + '%'}}>
+        <div className="progres" style={{width: percentage(areaText) + '%'}}>
         </div>
       </div>
     </div>
