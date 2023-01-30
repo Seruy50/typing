@@ -134,7 +134,7 @@ let arrayFromValue = () => {
       </div>
       <div>
         <div className="line">
-          <div className="progres" style={{ width: line + "%" }}></div>
+          <div className="progres" style={{ width: percentage(areaText) + "%" }}></div>
         </div>
       </div>
       <div className="hearts">{life}</div>
