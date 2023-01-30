@@ -5,7 +5,7 @@ import heartNo from "./2.jpg";
 function App() {
 
 const [areaText, setAreaText] = useState('')
-const [count, setCount] = useState(5);
+const [count, setCount] = useState(50);
 const [problem, setProblem] = useState(true);  
 const [intervalID, setIntervalID] = useState(0);
 const [result, setResult] = useState('');
@@ -13,16 +13,16 @@ const [copyStop, setCopyStop] = useState(false);
 const [bgc, setBgc] = useState({
   background: 'white'
 })
-const [line, setLine] = useState('30%');
-const [life, setLife] = useState([<span className="heartSpan" key="0"><img src={heart} alt="none" /></span>,
-  <span className="heartSpan" key="1"><img src={heart} alt="none" /></span>, 
-    <span className="heartSpan" key="2"><img src={heart} alt="none" /></span>]);
+const posi = [<span className="heartSpan" key="0"><img src={heart} alt="none" /></span>,
+<span className="heartSpan" key="1"><img src={heart} alt="none" /></span>, 
+  <span className="heartSpan" key="2"><img src={heart} alt="none" /></span>];
+const [life, setLife] = useState(posi);
 const [buttonAllow, setButtonAllow] = useState(false)
 
 
 
-//let str = 'У 1908 році було прокладено першу залізницю, що поєднала Володимир-Волинський із Ковелем на півночі і далі з Києвом, діяли поштово-телеграфна контора, вісім готелів, два кінотеатри, чотири фабрично-заводські підприємства.  '
-let str = 'Слово';
+let str = 'У 1908 році було прокладено першу залізницю, що поєднала Володимир-Волинський із Ковелем на півночі і далі з Києвом, діяли поштово-телеграфна контора, вісім готелів, два кінотеатри, чотири фабрично-заводські підприємства.'
+
 
 const lifeEnd = () => {
   let lifes = life;
@@ -33,12 +33,15 @@ const lifeEnd = () => {
 let changeText = (e) => {
   const value = e.target.value
   setAreaText(value);
-  
   arrayFromValue(e.target.value);
-  if(str.length === areaText.length && str === areaText){
+  console.log(str.length  + " " + areaText.length)
+  if(str.length  === (areaText.length) && str === areaText){
     setResult('Вітаю, вам вдалося!!!');
     setCount(count)
     clearInterval(intervalID);
+    setBgc({
+      background: "green",
+    });
   } else if(count <= 0) {
     setProblem(true); 
     lifeEnd();
@@ -79,7 +82,7 @@ let arrayFromValue = (text) => {
   const timerReset = () => {
     clearInterval(intervalID);
     setIntervalID(0);
-    setCount(5);
+    setCount(50);
     timer();
   };
 
@@ -92,9 +95,17 @@ let arrayFromValue = (text) => {
       setAreaText("");
       timerReset();
       setResult("");
-      setLine(0);
+      setBgc({
+        background: "white",
+      });
     }
   };
+
+  const oneMoreTime = () => {
+    setLife(posi);
+    setButtonAllow(false);
+
+  }
 
   return (
     <div>
@@ -106,7 +117,7 @@ let arrayFromValue = (text) => {
       <div className="centralPart">
         <div className="buttons">
           <div className="forButton">
-            <button>Reset</button>
+            <button onClick={oneMoreTime}>Reset</button>
           </div>
           <div className="forButton">
             <button
@@ -145,7 +156,7 @@ let arrayFromValue = (text) => {
         <p className="result">{result}</p>
         <p className="mistake">
           {buttonAllow
-            ? "Перепрошую, проте ви викристали усі спроби. Для того, щоб спробувати знову, натисніть на кнопку reset"
+            ? "Упс, на цьому все, ви програли. Reset дасть змогу спробувати ще"
             : ""}
         </p>
       </div>
