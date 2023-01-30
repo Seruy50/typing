@@ -98,7 +98,7 @@ let newAttempt = () => {
 
 
 
-return <>
+return <div>
     <div className='pseudoHeader'>
       <div className='text' onCopy={() => setCopyStop(true)}>{str}</div>
     </div>
@@ -132,7 +132,7 @@ return <>
       <p className="result">{result}</p>
       <p className="mistake">{buttonAllow ? 'Перепрошую, проте ви викристали усі спроби. Для того, щоб спробувати знову, натисніть на кнопку reset': ''}</p>
     </div>
- </>
+ </div>
 }
 
 export default App;
