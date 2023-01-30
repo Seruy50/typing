@@ -33,12 +33,12 @@ const lifeEnd = () => {
 let changeText = (e) => {
   const value = e.target.value
   setAreaText(value);
-  
+
   console.log(value)
   
   arrayFromValue();
   if(str.length === areaText.length && str === areaText){
-    setResult('Вітаю, вам вдалося!');
+    setResult('Вітаю, вам вдалося!!!');
     setCount(count)
     clearInterval(intervalID);
   } else if(count <= 0) {
